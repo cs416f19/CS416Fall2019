@@ -1,28 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Register User</title>
-    <style>
-        input{
-            padding: 10px;
-            margin: 10px;
-        }
-    </style>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block content %}
 
     <h1>Sign Up</h1>
 
-    <form action="{% url 'addUser'%}" method="post">{% csrf_token %}
+        <form action="{% url 'addUser'%}" method="post">{% csrf_token %}
 
-        First Name:   <input type="text" name="firstName" placeholder="Your name">
-        Last Name:    <input type="text" name="lastName" placeholder="Your lastname">
-        Age:          <input type="text" name="age" placeholder="Your age">
+            First Name:   <input type="text" name="firstName" placeholder="Your name">
+            Last Name:    <input type="text" name="lastName" placeholder="Your lastname">
+            Age:          <input type="text" name="age" placeholder="Your age">
 
-        <input type="submit" value="Register">
+            <input type="submit" value="Register">
 
-    </form>
+        </form>
 
-</body>
-</html>
+{% endblock %}

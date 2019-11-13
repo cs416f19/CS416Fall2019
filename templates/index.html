@@ -1,18 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>List People</title>
-</head>
-<body>
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+    {% load static from staticfiles%}
+    <img src="{% static 'img/example.jpg' %}" alt="My image">
 
     <h1>List of people who registered</h1>
+
+    <a href="{% url 'deleteUser' %}">Delete a user</a>
 
     {% for person in people %}
         <h4> ID: {{ person.id }}, Name: {{ person.first_name }}, LastName: {{ person.last_name }}, Age: {{ person.age }}</h4>
     {% endfor %}
 
-
     <a href="{% url 'register' %}">Go to Register Page</a>
-</body>
-</html>
+
+{% endblock %}

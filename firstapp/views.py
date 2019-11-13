@@ -35,6 +35,10 @@ def register(request):
     template = 'register.html'
     return render(request, template)
 
+def deleteUser(request):
+    # Delete a record from the top in the db, and then redirect to the index.html
+    People.objects.first().delete()
+    return redirect('index')
 
 def test(request):
     # Add a record to the database
