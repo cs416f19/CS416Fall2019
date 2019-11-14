@@ -1,5 +1,4 @@
 from django import forms
-from django.forms import ModelForm
 from .models import ContactMessage
 
 
@@ -10,7 +9,7 @@ class ContactForm(forms.Form):
     message = forms.CharField(required=True, widget=forms.Textarea)
 
 
-class ContactForm(ModelForm):
+class ContactForm(forms.ModelForm):
     class Meta:
         model = ContactMessage
         fields = ['first_name', 'last_name', 'email', 'message']
