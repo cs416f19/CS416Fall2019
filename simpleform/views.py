@@ -3,6 +3,20 @@ from django.http import HttpResponse
 from .forms import ContactForm
 
 
+# def contact(request):
+#     if request.method == 'POST':
+#         form = ContactForm(request.POST)
+#         print(form)
+#         if form.is_valid():
+#             print("cleaned email: ", form.cleaned_data['email'])
+#         else:
+#             redirect('contact')
+#         return render(request, 'simpleform/thanks.html')
+#     else:
+#         form = ContactForm()
+#         context = {'form' : form}
+#         return render(request, 'simpleform/contact.html', context)
+
 def contact(request):
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
@@ -16,6 +30,11 @@ def contact(request):
             form.save()
             # redirect to a new URL:
             return render(request, 'simpleform/thanks.html')
+        else:
+            form = ContactForm()
+            context = {'form': form, 'error' : 'The data entered is not valid!'}
+            template = 'simpleform/contact.html'
+            return render(request, template, context)
     else:
         form = ContactForm()
         context = {'form' : form}
