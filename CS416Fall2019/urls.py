@@ -21,5 +21,6 @@ urlpatterns = [
     path('', include('firstapp.urls')),
     path('form/', include('simpleform.urls')),
     path('auth/', include('simple_authentication.urls')),
-    path('auth2/', include('simple_authentication2.urls'))
+    path('auth2/', include('simple_authentication2.urls')),
+    path('crud/', include('simple_crud.urls'))
 ]

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+    <h1>Product Form</h1>
+    <form method="POST">
+    {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Save">
+    </form>
+
+    {% if product %}
+        <a href="{% url  'delete_product' product.id%}">Delete</a>
+    {% endif %}
+
+{% endblock %}

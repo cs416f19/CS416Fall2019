@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'firstapp.apps.FirstappConfig',
     'simpleform.apps.SimpleformConfig',
+    'simple_crud.apps.SimpleCrudConfig',
 ]
 
 MIDDLEWARE = [
