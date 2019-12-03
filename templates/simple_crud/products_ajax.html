@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+
+    <h1>Products</h1>
+
+    <table border="1">
+
+    <tr>
+        <th>Description</th>
+        <th>Delete?</th>
+    </tr>
+
+        {% for product in products %}
+                <tr id="product-{{ product.id }}">
+                    <td>
+                        <a href="{% url 'update_product' product.id %}">{{ product.description }}</a><br>
+                    </td>
+                    <td>
+                        <input type="image" src="https://icon-library.net/images/x-mark-icon/x-mark-icon-5.jpg" width="50" height="50" onclick="deleteProduct({{ product.id }});">
+                    </td>
+                </tr>
+        {% endfor %}
+
+    </table>
+    <a href="{% url 'create_product' %}">New Product</a>
+
+
+     <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <script>
+
+    function deleteProduct(id){
+
+        $.ajax({
+            url:  '{% url  'delete_product_ajax'%}',
+            type:  'POST',
+            dataType:  'json',
+            data : {'id': id, csrfmiddlewaretoken: '{{ csrf_token }}' }, // We need csrfmiddlewaretoken since this is a post
+            success: function  (response) {
+                console.log(response);
+                // Fade-out animation before removing it, kind of cool :)
+               $("#product-" + id).fadeOut( "slow" );
+               //$("#product-" + id).remove();
+            }
+        });
+
+    }
+
+    </script>
+
+{% endblock %}
