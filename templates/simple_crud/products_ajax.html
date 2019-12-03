@@ -40,9 +40,11 @@
             data : {'id': id, csrfmiddlewaretoken: '{{ csrf_token }}' }, // We need csrfmiddlewaretoken since this is a post
             success: function  (response) {
                 console.log(response);
-                // Fade-out animation before removing it, kind of cool :)
-               $("#product-" + id).fadeOut( "slow" );
-               //$("#product-" + id).remove();
+                if(response.deleted == true){
+                    // Fade-out animation before removing it, kind of cool :)
+                    $("#product-" + id).fadeOut( "slow" );
+                    //$("#product-" + id).remove();
+                }
             }
         });
 
